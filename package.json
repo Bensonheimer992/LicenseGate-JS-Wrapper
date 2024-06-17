@@ -6,7 +6,7 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "repository": {
-    "url": ""
+    "url": "https://github.com/Bensonheimer992/LicenseGate-JS-Wrapper"
   },
   "scripts": {
     "build": "tsup"
