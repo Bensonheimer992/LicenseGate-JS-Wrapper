@@ -1,0 +1,29 @@
+{
+  "name": "licensegate",
+  "version": "0.0.1",
+  "description": "This is a Javascript Wrapper for a LicenseGate Server",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "repository": {
+    "url": ""
+  },
+  "scripts": {
+    "build": "tsup"
+  },
+  "keywords": [
+    "licensegate, license, DevLeoko"
+  ],
+  "author": "Bensonheimer992",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.14.2",
+    "tsup": "^8.1.0",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "crypto": "^1.0.1",
+    "util": "^0.12.5"
+  }
+}
