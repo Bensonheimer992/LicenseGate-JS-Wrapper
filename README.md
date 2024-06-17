@@ -2,7 +2,7 @@
 
 ## Installation
 
-To install CommandKit, simply run the following command:
+To install LicenseGate Wrapper, simply run the following command:
 
 For npm:
 

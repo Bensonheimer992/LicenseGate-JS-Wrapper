@@ -1,6 +1,6 @@
 {
   "name": "licensegate",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "This is a Javascript Wrapper for a LicenseGate Server",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
