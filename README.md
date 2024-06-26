@@ -13,6 +13,11 @@ npm install licensegate
 
 ```
 
+## Dependencies
+
+- Axios
+- Node.js v20.11.10 or higher
+
 ## Usage
 ```js
 //index.js
@@ -28,9 +33,9 @@ async function checkLicense() {
   const result = await licenseGate.verify(licenseKey);
 
   if (result === ValidationType.VALID) {
-    console.log('Der Lizenzschlüssel ist gültig.');
+    console.log('The Key is Valid.');
   } else {
-    console.log(`Der Lizenzschlüssel ist ungültig. Grund: ${result}`);
+    console.log(`The Key is invalid. Reason: ${result}`);
   }
 }
 
@@ -53,9 +58,9 @@ async function checkLicense() {
   const result = await licenseGate.verify(licenseKey);
 
   if (result === ValidationType.VALID) {
-    console.log('Der Lizenzschlüssel ist gültig.');
+    console.log('The Key is Valid.');
   } else {
-    console.log(`Der Lizenzschlüssel ist ungültig. Grund: ${result}`);
+    console.log(`The Key is invalid. Reason: ${result}`);
   }
 }
 
@@ -78,9 +83,9 @@ async function checkLicense() {
   const result = await licenseGate.verify(licenseKey);
 
   if (result === ValidationType.VALID) {
-    console.log('Der Lizenzschlüssel ist gültig.');
+    console.log('The Key is Valid.');
   } else {
-    console.log(`Der Lizenzschlüssel ist ungültig. Grund: ${result}`);
+    console.log(`The Key is invalid. Reason: ${result}`);
   }
 }
 

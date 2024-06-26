@@ -1,6 +1,5 @@
 import axios from 'axios';
-import * as crypto from 'crypto';
-import * as util from 'util';
+import crypto from 'crypto';
 
 export enum ValidationType {
   VALID = 'VALID',
@@ -113,7 +112,7 @@ export default class LicenseGate {
   }
 
   private async requestServer(url: string): Promise<any> {
-    const response = await axios.get(url, { headers: { 'User-Agent': 'Mozilla/5.0' } });
+    const response = await axios.get(url, { headers: { 'User-Agent': 'Bensonheimer992/LicenseGate-JS Wrapper' } });
     if (this.debugMode) {
       console.log(`\nSending request to URL : ${url}`);
       console.log(`Response Code : ${response.status}`);
@@ -122,13 +121,27 @@ export default class LicenseGate {
     return response.data;
   }
 
+  
   private verifyChallenge(challenge: string, signedChallengeBase64: string): boolean {
     try {
-      const verify = crypto.createVerify('SHA256');
+      const pemHeader = "-----BEGIN PUBLIC KEY-----";
+      const pemFooter = "-----END PUBLIC KEY-----";
+      const base64PublicKey = this.publicRsaKey!.replace(pemHeader, "").replace(pemFooter, "").replaceAll("\\s+", "");
+      
+      const publicKeyBytes = Buffer.from(base64PublicKey, 'base64');
+      const publicKey = crypto.createPublicKey({
+          key: publicKeyBytes,
+          format: 'der',
+          type: 'spki'
+      });
+
+      const signatureBytes = Buffer.from(signedChallengeBase64, 'base64');
+
+      const verify = crypto.createVerify('SHA256')
       verify.update(challenge);
       verify.end();
-      const publicKey = this.publicRsaKey!.replace(/-----BEGIN PUBLIC KEY-----|-----END PUBLIC KEY-----|\n/g, '');
-      return verify.verify(publicKey, signedChallengeBase64, 'base64');
+
+      return verify.verify(publicKey, signatureBytes);
     } catch (e) {
       if (this.debugMode) console.error(e);
       return false;
