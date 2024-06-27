@@ -76,9 +76,9 @@ const { ValidationType } = require('licensegate');
 async function checkLicense() {
   const userId = 'Your UserID';
   const licenseKey = 'Your LicenseKey';
-  const publicRSAKey = 'Your RSA Key'
+  const publicRSAKey = 'Your RSA Key';
 
-  const licenseGate = new LicenseGate(userId).setPublicRsaKey(publicRSAKey);
+  const licenseGate = new LicenseGate(userId).setPublicRsaKey(publicRSAKey).useChallenges(true);
 
   const result = await licenseGate.verify(licenseKey);
 
